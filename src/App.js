@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import classes from "./App.module.scss";
+import Comment from "./components/Comments/Comment";
+import NewComment from "./components/Comments/CurrentUser/NewComment";
+import CommentContextProvider from "./store/Comment/CommentContextProvider";
+import ModalContextProvider from "./store/Modal/ModalContextProvider";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<CommentContextProvider>
+			<ModalContextProvider>
+				<div
+					className={`${classes.App} bg-neutral-veryLightGray px-[16px] py-[32px] relative`}
+				>
+					<Comment />
+					<NewComment />
+				</div>
+			</ModalContextProvider>
+		</CommentContextProvider>
+	);
 }
 
 export default App;
