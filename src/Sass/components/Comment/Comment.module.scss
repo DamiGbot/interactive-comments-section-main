@@ -1,0 +1,18 @@
+@use "../../base/style-guide" as guide;
+
+.comment {
+	padding: 1.6rem;
+	margin: {
+		bottom: 1.6rem;
+	}
+}
+
+.replies {
+	border-left: 0.2rem solid guide.$neutral-light-gray;
+
+	.comment {
+		margin: {
+			left: 1.6rem;
+		}
+	}
+}

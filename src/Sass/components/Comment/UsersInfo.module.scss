@@ -1,0 +1,37 @@
+@use "../../base/style-guide" as guide;
+
+.userInfo {
+	display: flex;
+	gap: 1.6rem;
+	align-items: center;
+	margin: {
+		bottom: 1.6rem;
+	}
+
+	img {
+		width: 3.2rem;
+	}
+
+	.username {
+		font-weight: guide.$font-weight-three;
+	}
+
+	.currentUser {
+		background-color: guide.$primary-moderate-blue;
+		color: guide.$neutral-white;
+		font-weight: guide.$font-weight-one;
+		padding: {
+			top: 0.1rem;
+			right: 0.7rem;
+			down: 0.3rem;
+			left: 0.6rem;
+		}
+		margin: {
+			left: -0.8rem;
+		}
+	}
+
+	.timestamp {
+		color: guide.$neutral-grayish-blue;
+	}
+}

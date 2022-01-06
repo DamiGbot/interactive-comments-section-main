@@ -1,0 +1,51 @@
+@use "../../base/style-guide" as guide;
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.rating {
+		background-color: guide.$neutral-very-light-gray;
+		border-radius: 1rem;
+		color: guide.$primary-moderate-blue;
+		font-weight: guide.$font-weight-two;
+		font-size: 1.8rem;
+
+		button {
+			font-weight: guide.$font-weight-two;
+			font-size: 2rem;
+			padding: 0.8rem 0.7rem;
+			margin: {
+				right: 1rem;
+				left: 1rem;
+			}
+			color: guide.$primary-light-grayish-blue;
+		}
+	}
+
+	.dispatch {
+		button {
+			font-weight: guide.$font-weight-two;
+
+			span {
+				float: left;
+				transform: translateY(0.4rem);
+				margin: {
+					right: 0.8rem;
+				}
+			}
+		}
+
+		.delete {
+			color: guide.$primary-soft-red;
+			margin: {
+				right: 1.6rem;
+			}
+		}
+
+		.general {
+			color: guide.$primary-moderate-blue;
+		}
+	}
+}

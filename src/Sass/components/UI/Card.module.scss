@@ -1,0 +1,6 @@
+@use "../../base/style-guide" as guide;
+
+.card {
+	background-color: guide.$neutral-white;
+	border-radius: 0.8rem;
+}

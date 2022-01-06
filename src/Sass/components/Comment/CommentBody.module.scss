@@ -1,0 +1,23 @@
+@use "../../base/style-guide" as guide;
+
+.commentBody {
+	margin: {
+		bottom: 1.6rem;
+	}
+	font-weight: guide.$font-weight-one;
+
+	span {
+		color: guide.$primary-moderate-blue;
+		font-weight: guide.$font-weight-two;
+	}
+
+	p {
+		color: guide.$neutral-grayish-blue;
+	}
+}
+
+.currentUser {
+	margin: {
+		bottom: 4rem;
+	}
+}
