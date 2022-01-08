@@ -1,0 +1,37 @@
+@use "../../base/style-guide" as guide;
+
+.input-comment {
+	padding: 1.6rem;
+
+	.input {
+		width: 100%;
+		border: 0.2rem solid #e9ebf0;
+		resize: none;
+		padding: 1.2rem 2.4rem;
+		border-radius: 0.8rem;
+		color: guide.$neutral-grayish-blue;
+		@include guide.marginBottom();
+		outline: none;
+		caret-color: guide.$primary-moderate-blue;
+
+		&:active,
+		&:focus {
+			border-color: guide.$primary-moderate-blue;
+		}
+	}
+
+	div {
+		@include guide.spaceBetween;
+
+		img {
+			width: 3.2rem;
+		}
+
+		button {
+			padding: 1.2rem 3rem;
+			color: guide.$neutral-white;
+			font-weight: guide.$font-weight-two;
+			background-color: guide.$primary-moderate-blue;
+		}
+	}
+}

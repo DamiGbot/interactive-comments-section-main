@@ -18,3 +18,15 @@ $font-size: 1.6rem;
 $font-weight-one: 400;
 $font-weight-two: 500;
 $font-weight-three: 700;
+
+@mixin marginBottom {
+	margin: {
+		bottom: 1.6rem;
+	}
+}
+
+@mixin spaceBetween {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

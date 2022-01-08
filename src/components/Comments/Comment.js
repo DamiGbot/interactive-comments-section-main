@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 
 import Card from "../UI/Card";
 import Actions from "./Actions";
 import CommentBody from "./CommentBody";
 import UsersInfo from "./UsersInfo";
-import commentData from "../../dev-data/data/data.json";
+
+import { ModalContext } from "../../store/Modal/ModalContext";
 
 import classes from "../../Sass/components/Comment/Comment.module.scss";
+import Modal from "../UI/Modal";
+import DeleteComment from "./DeleteComment";
 
 const Comment = () => {
-	const commentContext = commentData.comments.map((item) => (
+	const modalCtx = useContext(ModalContext);
+	const commentData = useSelector((state) => state.comment.comments);
+
+	const { modalOpened } = modalCtx;
+
+	const comments = commentData.comments.map((item) => (
 		<div key={item.id}>
 			<Card className={classes.comment}>
 				<UsersInfo item={item} user={commentData.currentUser} />
@@ -29,7 +38,16 @@ const Comment = () => {
 		</div>
 	));
 
-	return <>{commentContext}</>;
+	return (
+		<>
+			{modalOpened && (
+				<Modal>
+					<DeleteComment />
+				</Modal>
+			)}
+			{comments}
+		</>
+	);
 };
 
 export default Comment;

@@ -1,0 +1,39 @@
+@use "../../base//style-guide" as guide;
+
+.delete-comment {
+	margin: 1.6rem 2.7rem;
+
+	h3 {
+		color: guide.$neutral-dark-blue;
+		font-weight: guide.$font-weight-two;
+		font-size: 2rem;
+		@include guide.marginBottom();
+	}
+
+	p {
+		color: guide.$neutral-grayish-blue;
+		font-size: 1.6rem;
+		@include guide.marginBottom();
+	}
+
+	div {
+		@include guide.spaceBetween;
+		justify-content: center;
+		gap: 1.2rem;
+
+		button {
+			font-size: 1.6rem;
+			color: guide.$neutral-white;
+		}
+
+		.cancel {
+			background-color: guide.$neutral-grayish-blue;
+			padding: 1.2rem 2.1rem;
+		}
+
+		.delete {
+			background-color: guide.$primary-soft-red;
+			padding: 1.2rem 1.9rem;
+		}
+	}
+}
