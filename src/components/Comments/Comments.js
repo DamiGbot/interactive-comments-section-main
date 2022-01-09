@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 
 import Card from "../UI/Card";
-import Actions from "./Actions";
+import Actions from "./ActionsButtons";
 import CommentBody from "./CommentBody";
 import UsersInfo from "./UsersInfo";
 
@@ -22,7 +22,7 @@ const Comment = () => {
 		<div key={item.id}>
 			<Card className={classes.comment}>
 				<UsersInfo item={item} user={commentData.currentUser} />
-				<CommentBody item={item} />
+				<CommentBody item={item} user={commentData.currentUser} />
 				<Actions item={item} user={commentData.currentUser} />
 			</Card>
 
@@ -30,7 +30,7 @@ const Comment = () => {
 				{item.replies.map((item) => (
 					<Card key={item.id} className={classes.comment}>
 						<UsersInfo item={item} user={commentData.currentUser} />
-						<CommentBody item={item} />
+						<CommentBody item={item} user={commentData.currentUser} />
 						<Actions item={item} user={commentData.currentUser} />
 					</Card>
 				))}

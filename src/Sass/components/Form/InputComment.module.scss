@@ -2,6 +2,8 @@
 
 .input-comment {
 	padding: 1.6rem;
+	position: sticky;
+	bottom: 0;
 
 	.input {
 		width: 100%;
@@ -32,6 +34,15 @@
 			color: guide.$neutral-white;
 			font-weight: guide.$font-weight-two;
 			background-color: guide.$primary-moderate-blue;
+
+			&:disabled,
+			&:disabled:hover,
+			&:disabled:active {
+				cursor: not-allowed;
+				background-color: #ccc;
+				color: black;
+				font-weight: guide.$font-weight-one;
+			}
 		}
 	}
 }

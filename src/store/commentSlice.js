@@ -29,32 +29,42 @@ const commentSlice = createSlice({
 			state.comments.comments = state.comments.comments.filter(
 				(item) => item.id !== id
 			);
-
-			state.id = null;
-			state.isReplying = null;
 		},
 
-		// TODO // STOPPED HERE
 		addReplies(state, action) {
 			const id = action.payload.id;
-			const item = state.comments.comments.find((el) => el.id === id);
+			const replyingTo = action.payload.replyingTo;
 
-			if (!item) {
-				item.replies();
-				return;
+			let commentArray = state.comments.comments.find((item) => item.id === id);
+			let username = commentArray ? commentArray.user.username : null;
+
+			if (!commentArray) {
+				commentArray = state.comments.comments.filter(
+					(item) => item.replies.find((el) => el.id === id) !== undefined
+				);
+				commentArray = commentArray[0];
+
+				username = replyingTo;
 			}
 
-			item.replies.push({
+			commentArray.replies.push({
 				id: Math.random(),
 				content: action.payload.content,
 				createdAt: Date.now(),
 				score: 0,
+				replyingTo: username,
 				user: state.comments.currentUser,
 				replies: [],
 			});
 		},
 
-		removeReplies(state, action) {},
+		removeReplies(state, action) {
+			const id = action.payload.id;
+
+			state.comments.comments.forEach(
+				(item) => (item.replies = item.replies.filter((el) => el.id !== id))
+			);
+		},
 
 		editComment() {},
 	},

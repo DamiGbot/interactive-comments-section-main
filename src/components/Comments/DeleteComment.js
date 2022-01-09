@@ -8,7 +8,7 @@ import { commentActions } from "../../store/commentSlice";
 
 import classes from "../../Sass/components/Comment/DeleteComment.module.scss";
 
-const { removeComment } = commentActions;
+const { removeComment, removeReplies, setVariables } = commentActions;
 
 // MOBILE COMPONENT
 const DeleteComment = () => {
@@ -20,15 +20,16 @@ const DeleteComment = () => {
 	const { closeModal } = modalCtx;
 
 	const deleteHandler = () => {
-		if (isReplying) {
-			console.log("not");
-			return;
-		}
-
 		setTimeout(() => {
-			dispatch(removeComment({ id }));
+			if (isReplying) {
+				dispatch(removeReplies({ id }));
+				return;
+			} else {
+				dispatch(removeComment({ id }));
+			}
 		}, 50);
 
+		dispatch(setVariables({ id: null, isReplying: null }));
 		closeModal();
 	};
 

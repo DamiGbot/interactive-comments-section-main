@@ -1,19 +1,22 @@
 import React from "react";
 
-import Comment from "./components/Comments/Comment";
 import InputComment from "./components/Form/InputComment";
 import ModalContextProvider from "./store/Modal/ModalContextProvider";
 
 import classes from "./Sass/pages/App.module.scss";
+import ReplyContextProvider from "./store/Reply/ReplyContextProvider";
+import CommentStructure from "./components/Comments/CommentStructure";
 
 function App() {
 	return (
-		<ModalContextProvider>
-			<div className={classes.App}>
-				<Comment />
-				<InputComment />
-			</div>
-		</ModalContextProvider>
+		<ReplyContextProvider>
+			<ModalContextProvider>
+				<div className={classes.App}>
+					<CommentStructure />
+					<InputComment />
+				</div>
+			</ModalContextProvider>
+		</ReplyContextProvider>
 	);
 }
 

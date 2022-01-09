@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
 
 import { ModalContext } from "../../store/Modal/ModalContext";
+import { ReplyContext } from "../../store/Reply/reply-context";
 
 import { commentActions } from "../../store/commentSlice";
 import classes from "../../Sass/components/Comment/Actions.module.scss";
@@ -9,26 +10,28 @@ import classes from "../../Sass/components/Comment/Actions.module.scss";
 const Actions = (props) => {
 	const dispatch = useDispatch();
 	const modalCtx = useContext(ModalContext);
+	const replyCtx = useContext(ReplyContext);
 
 	const { showModal } = modalCtx;
+	const { getRepliesVariables } = replyCtx;
 	const { setVariables } = commentActions;
 
 	const isCurrentUser = props.user.username === props.item.user.username;
 
-	const setVariableHandler = () => {
-		dispatch(
-			setVariables({ id: props.item.id, isReplying: props.item.replyingTo })
-		);
+	const setVariableHandler = (value) => {
+		dispatch(setVariables({ id: props.item.id, isReplying: value }));
 	};
 
 	const deleteHandler = () => {
 		showModal();
 
-		setVariableHandler();
+		setVariableHandler(props.item.replyingTo);
 	};
 
 	const replyHandler = () => {
-		setVariableHandler();
+		setVariableHandler(true);
+
+		getRepliesVariables(props.item.id, props.item.user.username);
 	};
 
 	return (
