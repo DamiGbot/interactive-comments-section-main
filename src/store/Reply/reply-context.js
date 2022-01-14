@@ -3,6 +3,7 @@ import React from "react";
 export const ReplyContext = React.createContext({
 	replyId: "",
 	replyTo: "",
-	atText: "",
+	isReply: false,
 	getRepliesVariables: () => {},
+	// textAreaInput: () => {},
 });

@@ -17,7 +17,7 @@ const commentSlice = createSlice({
 			state.comments.comments.push({
 				id: Math.random(),
 				content: action.payload.content,
-				createdAt: Date.now(),
+				createdAt: Date.now().valueOf(),
 				score: 0,
 				user: state.comments.currentUser,
 				replies: [],

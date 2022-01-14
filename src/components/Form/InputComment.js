@@ -20,7 +20,7 @@ const InputComment = (props) => {
 	const isReplying = useSelector((state) => state.comment.isReplying);
 	const replyCtx = useContext(ReplyContext);
 
-	const { replyId, replyTo } = replyCtx;
+	const { replyId, replyTo, isReply } = replyCtx;
 
 	const textInputIsValid = textInput.trim() !== "";
 
@@ -58,31 +58,68 @@ const InputComment = (props) => {
 		setRowValue(1);
 	};
 
-	return (
-		<Card className={classes["input-comment"]}>
-			<form onSubmit={submitHandler}>
-				<textarea
-					placeholder="Add a comment..."
-					className={classes.input}
-					rows={rowValue}
-					value={textInput}
-					onChange={textChangeHandler}
-					onFocus={focusHandler}
-					onBlur={blurHandler}
-				></textarea>
+	const clearBackdropHandler = () => {
+		dispatch(setVariables({ id: null, isReplying: null }));
+	};
 
-				<div>
-					<img
-						src={require(`../../dev-data/data${data.currentUser.image.png}`)}
-						alt="Current user"
-					/>
-					<Button disabled={!formValid} type="button">
-						SEND
-					</Button>
-				</div>
-			</form>
-		</Card>
+	const replyComment = (
+		<>
+			<div className={classes.backdrop} onClick={clearBackdropHandler}></div>
+			<Card className={classes["input-comment"]}>
+				<form onSubmit={submitHandler}>
+					<textarea
+						autoFocus
+						placeholder="Add a comment..."
+						className={classes.input}
+						rows={4}
+						value={textInput}
+						onChange={textChangeHandler}
+					></textarea>
+
+					<div>
+						<img
+							src={require(`../../dev-data/data${data.currentUser.image.png}`)}
+							alt="Current user"
+						/>
+						<Button disabled={!formValid} type="button">
+							SEND
+						</Button>
+					</div>
+				</form>
+			</Card>
+		</>
+	);
+
+	return (
+		<>
+			{isReplying && isReply && replyComment}
+			{(!isReplying || !isReply) && (
+				<Card className={classes["input-comment"]}>
+					<form onSubmit={submitHandler}>
+						<textarea
+							placeholder="Add a comment..."
+							className={classes.input}
+							rows={rowValue}
+							value={textInput}
+							onChange={textChangeHandler}
+							onFocus={focusHandler}
+							onBlur={blurHandler}
+						></textarea>
+
+						<div>
+							<img
+								src={require(`../../dev-data/data${data.currentUser.image.png}`)}
+								alt="Current user"
+							/>
+							<Button disabled={!formValid} type="button">
+								SEND
+							</Button>
+						</div>
+					</form>
+				</Card>
+			)}
+		</>
 	);
 };
-
+// overlay-root
 export default InputComment;

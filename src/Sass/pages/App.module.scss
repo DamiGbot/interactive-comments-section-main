@@ -3,3 +3,14 @@
 .App {
 	font-size: guide.$font-size;
 }
+
+@include guide.media-lg {
+	.App {
+		margin: {
+			bottom: 0;
+			top: 2%;
+			left: 20%;
+			right: 20%;
+		}
+	}
+}

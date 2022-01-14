@@ -16,3 +16,29 @@
 		}
 	}
 }
+
+@include guide.media-lg {
+	.comment {
+		padding: {
+			left: 2.4rem;
+			right: 2.4rem;
+		}
+	}
+
+	.replies {
+		margin: {
+			left: 2.4rem;
+		}
+
+		.comment {
+			margin: {
+				left: 2.4rem;
+			}
+
+			padding: {
+				left: 2.4rem;
+				right: 2.4rem;
+			}
+		}
+	}
+}

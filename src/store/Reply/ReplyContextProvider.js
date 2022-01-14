@@ -1,11 +1,11 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 
 import { ReplyContext } from "./reply-context";
 
 const defaultState = {
 	replyingTo: "",
 	replyingId: "",
-	inputText: "",
+	isReplying: false,
 };
 
 const variableReducer = (state, actions) => {
@@ -13,15 +13,7 @@ const variableReducer = (state, actions) => {
 		return {
 			replyingTo: actions.replying,
 			replyingId: actions.id,
-			inputText: state.inputText,
-		};
-	}
-
-	if (actions.type === "TEXT") {
-		return {
-			replyingTo: actions.replying,
-			replyingId: actions.id,
-			inputText: state.inputText,
+			isReplying: actions.reply,
 		};
 	}
 
@@ -31,12 +23,8 @@ const variableReducer = (state, actions) => {
 const ReplyContextProvider = (props) => {
 	const [replyVariables, dispatch] = useReducer(variableReducer, defaultState);
 
-	const repliesHandler = (id, replying) => {
-		dispatch({ type: "CHANGE", id, replying });
-	};
-
-	const testAreaHandler = (text) => {
-		dispatch({ type: "TEXT", val: text });
+	const repliesHandler = (id = "", replying = "", reply) => {
+		dispatch({ type: "CHANGE", id, replying, reply });
 	};
 
 	return (
@@ -44,7 +32,7 @@ const ReplyContextProvider = (props) => {
 			value={{
 				replyId: replyVariables.replyingId,
 				replyTo: replyVariables.replyingTo,
-				atText: replyVariables.inputText,
+				isReply: replyVariables.isReplying,
 				getRepliesVariables: repliesHandler,
 			}}
 		>

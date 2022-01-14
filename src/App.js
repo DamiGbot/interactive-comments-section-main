@@ -5,14 +5,14 @@ import ModalContextProvider from "./store/Modal/ModalContextProvider";
 
 import classes from "./Sass/pages/App.module.scss";
 import ReplyContextProvider from "./store/Reply/ReplyContextProvider";
-import CommentStructure from "./components/Comments/CommentStructure";
+import Layout from "./components/Comments/Layout";
 
 function App() {
 	return (
 		<ReplyContextProvider>
 			<ModalContextProvider>
 				<div className={classes.App}>
-					<CommentStructure />
+					<Layout />
 					<InputComment />
 				</div>
 			</ModalContextProvider>

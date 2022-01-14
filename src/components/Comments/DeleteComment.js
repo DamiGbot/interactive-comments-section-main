@@ -10,7 +10,6 @@ import classes from "../../Sass/components/Comment/DeleteComment.module.scss";
 
 const { removeComment, removeReplies, setVariables } = commentActions;
 
-// MOBILE COMPONENT
 const DeleteComment = () => {
 	const dispatch = useDispatch();
 	const id = useSelector((state) => state.comment.id);

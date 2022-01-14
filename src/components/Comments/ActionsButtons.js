@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 
 import { ModalContext } from "../../store/Modal/ModalContext";
@@ -8,6 +8,7 @@ import { commentActions } from "../../store/commentSlice";
 import classes from "../../Sass/components/Comment/Actions.module.scss";
 
 const Actions = (props) => {
+	const [score, setScore] = useState(props.item.score);
 	const dispatch = useDispatch();
 	const modalCtx = useContext(ModalContext);
 	const replyCtx = useContext(ReplyContext);
@@ -26,18 +27,35 @@ const Actions = (props) => {
 		showModal();
 
 		setVariableHandler(props.item.replyingTo);
+		getRepliesVariables(false);
 	};
 
 	const replyHandler = () => {
 		setVariableHandler(true);
 
-		getRepliesVariables(props.item.id, props.item.user.username);
+		getRepliesVariables(props.item.id, props.item.user.username, true);
+	};
+
+	const increaseScoreHandler = () => {
+		if (score === 15) {
+			return;
+		}
+		setScore(score + 1);
+	};
+
+	const decreaseScoreHandler = () => {
+		if (score === 0) {
+			return;
+		}
+		setScore(score - 1);
 	};
 
 	return (
 		<div className={classes.actions}>
 			<div className={classes.rating}>
-				<button>+</button>2<button>-</button>
+				<button onClick={increaseScoreHandler}>+</button>
+				{score}
+				<button onClick={decreaseScoreHandler}>-</button>
 			</div>
 
 			<div className={classes.dispatch}>
@@ -56,7 +74,7 @@ const Actions = (props) => {
 							Delete
 						</button>
 
-						<button className={classes.general}>
+						{/* <button className={classes.general}>
 							<span>
 								<img
 									alt="edit icon"
@@ -66,7 +84,7 @@ const Actions = (props) => {
 								/>
 							</span>
 							Edit
-						</button>
+						</button> */}
 					</>
 				)}
 
