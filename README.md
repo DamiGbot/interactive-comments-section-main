@@ -9,3 +9,15 @@ The user should be able to:
 - Create, Read, Update, and Delete comments and replies
 - Upvote and downvote comments
 - Keep track of when a comment or reply was made.
+
+## Languages and Tools
+
+- React
+- Redux
+- Javascript
+- Scss
+- Html
+
+## Design
+
+![Design followed](src/dev-data/Interactive-comments-section.png)
