@@ -1,5 +1,7 @@
 # Interactive comments section
 
+({} "Link Title")
+
 It is one of the challenges in frontendmentor.io. The challenge is to build out this page and get it looking as close to the design as possible.
 
 The user should be able to:
@@ -18,6 +20,30 @@ The user should be able to:
 - Scss
 - Html
 
-## Design
+## Screenshot
 
 ![Design followed](src/dev-data/Interactive-comments-section.png)
+
+## Installation
+
+1. Clone the repo
+
+```sh
+git clone https://github.com/DamiGbot/interactive-comments-section-main.git
+```
+
+2. Install dependencies
+
+```sh
+npm install
+```
+
+3. Start the project
+
+```sh
+npm start
+```
+
+## Authors
+
+- [Oluwadamilola Gbotolorun Emmanuel](https://github.com/DamiGbot)
