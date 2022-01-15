@@ -1,7 +1,5 @@
 # Interactive comments section
 
-({} "Link Title")
-
 It is one of the challenges in frontendmentor.io. The challenge is to build out this page and get it looking as close to the design as possible.
 
 The user should be able to:
