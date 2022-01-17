@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../UI/Button";
 import { ModalContext } from "../../store/Modal/ModalContext";
-
 import { commentActions } from "../../store/commentSlice";
 
 import classes from "../../Sass/components/Comment/DeleteComment.module.scss";
